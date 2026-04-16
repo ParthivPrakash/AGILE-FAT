@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: cert-container
-        image: YOUR_DOCKER_HUB_USERNAME/cert-app:latest
+        image: ppmis0140/cert-app:latest
 ---
 apiVersion: v1
 kind: Service
