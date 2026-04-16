@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cert-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cert-app
+  template:
+    metadata:
+      labels:
+        app: cert-app
+    spec:
+      containers:
+      - name: cert-container
+        image: YOUR_DOCKER_HUB_USERNAME/cert-app:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cert-service
+spec:
+  type: NodePort
+  selector:
+    app: cert-app
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30001
